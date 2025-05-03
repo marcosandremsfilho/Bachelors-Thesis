@@ -1,7 +1,8 @@
-from gpio_control import GpioControl
-from mqtt_connection import Mqtt
+from gpio_control import Gpio
+from mqtt_connection import MqttAdapter, MqttConnection
+from communication_gpio_controller import GpioCommunicationBridge
 
-rasp = GpioControl([35])
+rasp = Gpio([35])
 THINGSBOARD_HOST = 'demo.thingsboard.io'
 ACCESS_TOKEN = 'BrxR1Srk8KjnPu2lBXJq'
 
@@ -18,20 +19,6 @@ requests = {
     'getGpioStatus': get_gpio_status
 }
 
-mqtt = Mqtt(THINGSBOARD_HOST, ACCESS_TOKEN, requests)
-mqtt.configure()
+mqtt = MqttAdapter(MqttConnection(THINGSBOARD_HOST, ACCESS_TOKEN, requests))
 
-last_value = None
-mqtt.connect()
-
-try:
-    while True:
-        gpio_state = rasp.get_gpio(35)
-        if gpio_state != last_value:
-            print("Sending data . . .")
-            mqtt.send_telemetry_data("led_ativo", gpio_state)
-        last_value = gpio_state
-except KeyboardInterrupt:
-    mqtt.disconnect()
-
-
+GpioCommunicationBridge(mqtt, rasp).run_setup()
