@@ -3,7 +3,7 @@ const int RASP_DATA_OUT = 0; // This is the D3 pin but his respective GPIO is th
 const int IR_SENSOR = 4; // This is the D2 pin but his respective GPIO is the 4
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT); 
+  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(RASP_DATA_PIN, INPUT);
   pinMode(IR_SENSOR, INPUT);
   pinMode(RASP_DATA_OUT, OUTPUT);
@@ -20,9 +20,9 @@ void blink(){
   int state = digitalRead(RASP_DATA_PIN) ;
 
   if (state == HIGH){
-      digitalWrite(LED_BUILTIN, LOW);  
-      delay(1000);              
-      digitalWrite(LED_BUILTIN, HIGH);  
+      digitalWrite(LED_BUILTIN, LOW);
+      delay(1000);
+      digitalWrite(LED_BUILTIN, HIGH);
       delay(2000);
   }
   digitalWrite(LED_BUILTIN, LOW);
