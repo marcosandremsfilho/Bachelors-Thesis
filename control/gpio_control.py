@@ -1,27 +1,5 @@
-from abc import abstractmethod
 import RPi.GPIO as GPIO
-
-
-class GpioInterface:
-    @abstractmethod
-    def _update_status(self, actual_pin=None, state=None):
-        pass
-
-    @abstractmethod
-    def _configure_pins(self):
-        pass
-
-    @abstractmethod
-    def detect_pin_change(self):
-        pass
-
-    @abstractmethod
-    def set_gpio(self, pin, state):
-        pass
-
-    @abstractmethod
-    def get_gpio(self, pin=None):
-        pass
+from interfaces.gpio_interface import GpioInterface
 
 
 class Gpio(GpioInterface):
