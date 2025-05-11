@@ -36,7 +36,7 @@ class Gpio(GpioInterface):
         """
         for pin in self.GPIO_STATE:
             if pin in self.input_gpios:
-                self.GPIO_STATE[pin] = True if GPIO.input(pin) else False
+                self.GPIO_STATE[pin] = False if GPIO.input(pin) else True
         if actual_pin is not None:
             self.GPIO_STATE[actual_pin] = state
 
@@ -77,5 +77,5 @@ class Gpio(GpioInterface):
         if pin == None:
             self._update_status()
             return self.GPIO_STATE
-        self.GPIO_STATE[pin] = True if GPIO.input(pin) else False
+        self.GPIO_STATE[pin] = False if GPIO.input(pin) else True
         return self.GPIO_STATE[pin]
