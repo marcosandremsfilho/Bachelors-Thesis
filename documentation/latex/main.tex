@@ -12,7 +12,7 @@
 
 \resumo
 {
-Este trabalho apresenta o desenvolvimento de um sistema de monitoramento e controle remoto para sistemas legados elétricos e eletrônicos, integrando uma $Raspberry\ Pi\ 4$ com a plataforma $ThingsBoard$. Sendo assim, o sistema garante flexibilidade para integração de diferentes protocolos de comunicação e isolamento elétrico entre circuitos, assegurado pelo uso de optoacopladores e relés, além de utilizar uma arquitetura de software modular baseada no paradigma de programação orientada a objeto, utilizando padrões de interfaces. Para a comunicação de dados, no sistema industrial idealizado, otimizou-se a fim de transmitir apenas alterações de estado, aumentando a eficiência e a robustez da aplicação. Os resultados demonstram a adaptabilidade da solução a diferentes cenários industriais e laboratoriais.
+Este trabalho apresenta o desenvolvimento de um sistema de monitoramento e controle remoto para sistemas legados elétricos e eletrônicos, integrando uma $Raspberry\ Pi\ 4$ com a plataforma $ThingsBoard$. Sendo assim, o sistema garante flexibilidade para integração de diferentes protocolos de comunicação e isolamento elétrico entre circuitos, assegurado pelo uso de optoacopladores e relés, além de utilizar uma arquitetura de software modular baseada no paradigma de programação orientada a objeto, utilizando padrões de interfaces.
 }
 
 \palavrasChave
@@ -26,17 +26,20 @@ Este trabalho apresenta o desenvolvimento de um sistema de monitoramento e contr
 
 	
 \section{Introdução}
-Nos últimos anos, o teletrabalho passou por uma expansão acelerada e sem precedentes, impulsionada em grande parte pela pandemia de COVID-19. Antes da crise sanitária, o trabalho remoto já era praticado, mas por uma parcela restrita da força de trabalho. Dados do Instituto Brasileiro de Geografia e Estatística (IBGE) indicam que, enquanto em 2018 aproximadamente 3,8 milhões de brasileiros trabalhavam remotamente \cite{ibge2018}, esse número quase dobrou em 2022, atingindo cerca de 7,4 milhões, ou 7,7\% da população ocupada no país \cite{ibge2022}.\par
+Nos últimos anos, a necessidade de integração de dispositivos a rede de internet vem crescendo, essa tecnologia é conhecida como internet das coisas, ou também, como $Internet\ Of\ Things$ ou $IoT$ \cite{IoT2029}. Esse é um conceito que visa conectar dispositivos físicos a rede internet, para que seja possível coletar, receber e enviar dados sem a intervenção humana.\par
 
-Esse fenômeno não foi exclusivo do Brasil; globalmente, o trabalho remoto ganhou popularidade e se estabeleceu como uma preferência para muitos profissionais, que destacam benefícios como economia de tempo e custos com transporte, além de maior equilíbrio entre a vida pessoal e profissional. Por outro lado, o teletrabalho trouxe também novos desafios, como a sobrecarga de trabalho e a necessidade de adequação tecnológica e organizacional para manter a produtividade e a saúde dos trabalhadores \cite{oit}.\par
+Devido ao fato da $IoT$ permitir a automação e monitoramento de sistemas em tempo real, ela é capaz de se tornar totalmente versátil, sendo amplamente utilizada em áreas, como por exemplo, automação residencial, agricultura, saúde e na indústria 4.0.\par
 
-Diante desse desafio, foi desenvolvido um sistema para facilitar a integração de sistemas legados com a tecnologia $Internet\ Of\ Things\ (IoT)$ \cite{iot}, com o objetivo de melhorar a qualidade de vida dos trabalhadores. Esse sistema permite a execução de tarefas simples sem a necessidade de exposição a ambientes de risco, promovendo um local de trabalho mais seguro e eficiente. Além disso, ele foi projetado para ser facilmente adaptável a diferentes cenários, exigindo poucas alterações para atender às necessidades específicas de cada situação.\par
+Diante desse cenário crescente, foi desenvolvido um sistema para facilitar a integração de sistemas conhecidos como legado ($software$, $hardware$ ou infraestrutura que foram desenvolvidos e implementados em uma organização no passado, muitas vezes usando tecnologias ou padrões antigos) com a tecnologia $IoT$ \cite{iot}, com o objetivo de melhorar a qualidade de vida das pessoas. Esse sistema permite executar e monitorar a execução de tarefas sem a necessidade da ida presencial ao ambiente do dispositivo. Além disso, ele foi projetado para ser facilmente adaptável a diferentes cenários, exigindo poucas alterações para atender às necessidades específicas de cada situação.\par
 
 \section{Proposta}
-O presente projeto visa ao desenvolvimento de um sistema de monitoramento e controle remoto para plantas de sistemas elétricos e eletrônicos conhecidos como legado ($software$, $hardware$ ou infraestrutura que foram desenvolvidos e implementados em uma organização no passado, muitas vezes usando tecnologias ou padrões antigos). A arquitetura proposta integra uma $Raspberry\ Pi\ 4$ \cite{rasp} com a plataforma $ThingsBoard$ \cite{thingsBoard}, permitindo o recebimento e envio de dados em tempo real. \par
+O presente projeto visa ao desenvolvimento de um sistema de monitoramento e controle remoto para plantas de sistemas elétricos e eletrônicos legados. A arquitetura proposta integra uma $Raspberry\ Pi\ 4$ \cite{rasp}, um computador de baixo custo, desenvolvido para fins educacionais e projetos de prototipagem, com a plataforma $ThingsBoard$ \cite{thingsBoard}, uma plataforma de código aberto para $IoT$ que permite o controle e visualização de dados de dispositivos conectados. Com isso é possível desenvolver um sistema que permite o recebimento e envio de dados em tempo real. \par
+
 A solução oferece uma abordagem robusta e versátil para a supervisão em tempo real, permitindo intervenções e ajustes à distância, o que é essencial para aplicações que exigem alta disponibilidade e segurança operacional. Além disso, a arquitetura do sistema possibilita o desenvolvimento de interfaces mais complexas, bem como a integração com circuitos mais elaborados.\par
+
 O grande diferencial desta proposta é sua adaptabilidade, permitindo que o sistema seja facilmente ajustado para as mais diversas aplicações. Ele pode ser configurado tanto para ambientes industriais complexos quanto para sistemas de controle e monitoramento específicos, como o gerenciamento de uma bomba hidráulica em um sítio particular. Essa flexibilidade torna a solução versátil e capaz de atender diferentes necessidades com o mínimo de alterações, ampliando seu campo de aplicação e garantindo eficiência e qualidade em variados contextos.\par
-Para demonstrar um cenário de atuação do projeto, foi simulado um sistema de automação industrial legado, concebeu-se o cenário de uma indústria de produção alimentícia. Nesse sistema, um sensor infravermelho é utilizado para detectar embalagens que não estão corretamente posicionadas na linha de produção. Quando uma embalagem fora do padrão é identificada, o sistema aciona atuadores pneumáticos que realizam o desvio dessa peça. Dependendo do caso, a embalagem é redirecionada para descarte ou enviada de volta ao início da linha de produção, agora com o posicionamento corrigido. \par
+
+O projeto foi inspirado nas necessidades de pessoas que possuem propriedades rurais que praticam piscicultura \cite{pisicultura}. Essa atividade necessita do ligamento de bombas hidráulicas para manter a oxigenação dos peixes nos tanques, porém, manter o funcionamento 24hrs por dia pode ocasionar em um aumento considerável na conta de luz. Com essa inspiração, foi pensado em um framework cuja proposta é de facilitar a integração desses sistemas que antes necessitavam um acionamento presencial, para passarem a serem feitos via rede internet. \par
 
 \section{Referência teórica}
 
@@ -45,19 +48,19 @@ Nessa seção se trata do referêncial teórico do projeto, demonstrando as tecn
 \subsection{Projeto}
 \label{SeçãoIII1}
 
-Para representar o sensor industrial, utilizou-se um sensor infravermelho \cite{sensor_ir} para detectar peças que estejam em posições indesejadas. Por conseguinte, um $Light\ Emitting\ Diode(LED)$ \cite{led} embutido na placa $ESP8266$ \cite{esp8266} é acionado, simulando o funcionamento de um atuador no sistema. Esse $LED$ representa a ativação de um mecanismo para corrigir ou desviar a peça, demonstrando o conceito de atuação automatizada.\par
+Para representar um sistema de monitoramento de dados da placa de controle, utilizou-se um sensor infravermelho \cite{sensor_ir} para detectar objetos que estão ao seu alcance. Por conseguinte, um $Light\ Emitting\ Diode(LED)$ \cite{led} embutido na placa $ESP8266$ \cite{esp8266} é acionado, demonstrando que o sistema foi capaz de identificar algo através do sensor infravermelho e executar alguma ação. Esse $LED$ representa a ativação de algum mecanismo, como por exemplo, um acionamento de um relé para a ativação de uma bomba, demonstrando o conceito de atuação automatizada.\par
 
-Adicionalmente, com o auxílio da interface gráfica da plataforma $ThingsBoard$, implementou-se uma chave virtual que simula o acionamento de botoeiras por um operador. Essa chave virtual permite iniciar e finalizar o processo industrial de forma remota, demonstrando a integração do sistema com a $IoT$ e possibilitando maior praticidade e controle na operação. Além disso, a plataforma utiliza $LEDs$ que mostrarão ao operador, em tempo real, a leitura dos sensores e o acionamento dos atuadores pneumáticos.\par
+Adicionalmente, com o auxílio da interface gráfica da plataforma $ThingsBoard$, implementou-se uma chave virtual que simula o acionamento do sistema pelo operador. Essa chave virtual permite iniciar e finalizar o processos de forma remota, demonstrando a integração do sistema com a $IoT$ e possibilitando maior praticidade e controle na operação. Além disso, a plataforma utiliza $LEDs$ que mostrarão ao operador, em tempo real, a leitura dos sensores e o acionamento dos atuadores.\par
 
-No contexto de integração com sistemas legados, idealizou-se o uso de um Controlador Lógico Programável (CLP) $GE\ Fanuc\ Series\ 90-30$ \cite{gefanuc}, um CLP amplamente comercializado entre os anos 1980 e 2000, sendo atualmente classificado como tecnologia legada. Suas $General-purpose\ input/output\ (GPIO)$ \cite{gpio} apresentam níveis de tensão específicos, onde uma definição de pino alto (1) ocorre para tensões de 15V a 30V, enquanto o pino baixo (0) é definido entre 0V e 5V. Em contraste, a $Raspberry\ Pi\ 4$ \cite{Raspberry_pi_4}, utilizada como sistema de controle, opera com tensões de 0V a 3,3V em suas $GPIOs$, tornando impossível uma conexão direta entre os dois sistemas devido à incompatibilidade de níveis de tensão. \par
+No contexto de integração com sistemas legados, idealizou-se uma bomba hidráulica, que por sua vez não possui nenhuma tecnologia embarcada para o acesso a rede, podendo assim ser considerada uma tecnologia legada. Devido ao fato de uma bomba hidráulica possuir uma tensão elevada, tanto em corrente alternada (CA), trabalhando em faixas de tensão de 127Vac monofásico até 6,6kVac trifásico, enquanto em corrente contínua (CC) pode chegar até 48Vdc \cite{bomba}. In contrast, a $Raspberry\ Pi\ 4$ \cite{Raspberry_pi_4}, used as a control system, operates with 0V a 3,3V tensiles on its $GPIOs$, tornando impossible uma conexo direta between os dois sistemas devido a incompatibilidade of nveis of tenso. \par
 
 \subsection{Eletrônica}
 \label{SeçãoIII2}
-Para superar a incompatibilidade de tensão, o optoacoplador 4N25\cite{4n25} foi implementado como uma solução intermediária. Esse componente atua como um dispositivo de isolamento elétrico, permitindo a separação completa entre os circuitos de controle e de potência. Ele recebe sinais da $Raspberry\ Pi$ através de seu $LED$ interno, e, em resposta, ativa seu fototransistor, que atua sobre os circuitos do CLP. Dessa forma, não apenas a diferença de tensões é isolada, mas também os referenciais de terra ($GND$) dos dois sistemas permanecem independentes, evitando correntes de retorno indesejadas e garantindo a integridade e a operação segura de ambos os dispositivos.\par
+Para superar a incompatibilidade de tensão, o optoacoplador 4N25\cite{4n25} foi implementado como uma solução intermediária. Esse componente atua como um dispositivo de isolamento elétrico, permitindo a separação completa entre os circuitos de controle e de potência. Ele recebe sinais da $Raspberry\ Pi$ através de seu $LED$ interno, e, em resposta, ativa seu fototransistor, que atua sobre o circuito legado. Dessa forma, não apenas a diferença de tensões é isolada, mas também os referenciais de terra ($GND$) dos dois sistemas permanecem independentes, evitando correntes de retorno indesejadas e garantindo a integridade e a operação segura de ambos os dispositivos. Vale ressaltar também que essa é uma solução voltada aos atuadores com alimentação DC.\par
 
-Contudo, devido à alta tensão do CLP, não é possível utilizar o optoacoplador, sendo necessário também integrar um circuito que faz a conversão dos pinos de saída do CLP com os pinos de leitura da $Raspberry$. Dessa forma, utiliza-se um relé, que consiste em um dispositivo que possui uma bobina, capaz de chavear seus contatos e alterar o estado de saída. \par
+Contudo, devido à alta tensão dos atuadores, não é possível utilizar o optoacoplador, sendo necessário também integrar um circuito que faz a indicação de garantia que a tensão de alimentação está indo para a bomba com os pinos de leitura da $Raspberry$. Dessa forma, utiliza-se um relé, que consiste em um dispositivo que possui uma bobina, capaz de chavear seus contatos e alterar o estado de saída. Essa solução é voltada para o uso em atuadores AC.\par
 
-Com essa abordagem, a diferença de tensão de operação entre os sistemas é superada, permitindo seu funcionamento seguro e eficiente. Além disso, mantém-se os $GNDs$ dos sistemas industriais, que tendem a ser mais sujeitos a ruídos elétricos, isolados do $GND$ do sistema de controle. Essa separação evita possíveis danos tanto a curto quanto a longo prazo no equipamento de controle, que, apesar de confiável, é significativamente mais sensível a interferências externas do que os sistemas industriais. Assim, a solução adotada não só promove a integração funcional entre tecnologias diferentes, mas também preserva a integridade dos componentes envolvidos. \par
+Com essa abordagem, a diferença de tensão de operação entre os sistemas é superada, permitindo seu funcionamento seguro e eficiente. Além disso, mantém-se os $GNDs$ dos sistemas com atuadores, que tendem a ser mais sujeitos a ruídos elétricos, isolados do $GND$ do sistema de controle. Essa separação evita possíveis danos tanto a curto quanto a longo prazo no equipamento de controle, que, apesar de confiável, é significativamente mais sensível a interferências externas do que os sistemas que possuem atuadores integrados. Assim, a solução adotada não só promove a integração funcional entre tecnologias diferentes, mas também preserva a integridade dos componentes envolvidos. \par
 
 \subsection{Comunicação}
 Para a comunicação do equipamento com a interface gráfica $ThingsBoard\ $foi utilizado o protocolo $MQTT\ (Message\ Queuing\ Telemetry\ Transport)$ \cite{mqtt}, que consiste em um protocolo de comunicação leve e eficiente, projetado para transmitir dados entre dispositivos em redes de $IoT$ e outras aplicações que requerem baixo consumo de banda e energia.\par
@@ -68,41 +71,41 @@ O protocolo $MQTT$ opera segundo o modelo de publicação/assinatura, onde os di
 Esta seção descreve as etapas de desenvolvimento do sistema proposto, que visa possibilitar o monitoramento e controle remoto de sistemas previamente inacessíveis à distância. Vale ressaltar, o conceito central do projeto é a modularidade, permitindo que a estrutura seja adaptada conforme as necessidades específicas do usuário.\par
 
 \subsection{Hardware}
-Conforme mencionado na Subseção \ref{SeçãoIII2}, há uma incompatibilidade dos níveis de tensão do CLP com os pinos da $Raspberry$. Essa subseção é destinada a demonstrar os circuitos e a Placa de Circuito Impresso (PCI) que fazem o intermédio da comunicação entre esses dois sistemas. Para o desenvolvimento foi utilizado o $software\ KiCad$ \cite{kicad}. \par
+Conforme mencionado na Subseção \ref{SeçãoIII2}, há uma incompatibilidade dos níveis de tensão da bomba com os pinos da $Raspberry$. Essa subseção é destinada a demonstrar os circuitos e a Placa de Circuito Impresso (PCI) que fazem o intermédio da comunicação entre esses dois sistemas. Para o desenvolvimento foi utilizado o $software\ KiCad$ \cite{kicad}. \par
 
-A Figura \ref{fig:1} representa o esquemático que demonstra como deve ser feita a conexão das $GPIOs$ de saída do sistema de controle com o CLP.\par
+A Figura \ref{fig:1} representa o esquemático que demonstra como deve ser feita a conexão das $GPIOs$ de saída do sistema de controle com o sistema legado. Vale ressaltar também que, o projeto foi feito também para a utilização com sistemas de controle de maior alta tensão, podendo ser até botoeira CA.\par
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=0.2]{Figuras/esquemático_rasp_clp.png}
-    \caption{Esquemático da placa que faz a conexão das $GPIOs$ da $Raspberry$ com o sistema industrial}
+    \includegraphics[scale=0.2]{Figuras/rasp_actuator.png}
+    \caption{Esquemático da placa que faz a conexão das $GPIOs$ da $Raspberry$ com o sistema legado CC}
     \label{fig:1}
 \end{figure}
 
- A Figura \ref{fig:2} representa o esquemático do circuito de conversão dos $GPIOs$ do CLP com o sistema de controle. \par
+ A Figura \ref{fig:2} representa o esquemático do circuito de conversão do sistema legado com o sistema de controle. \par
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=0.15]{Figuras/esquematico_clp_rasp.png}
-    \caption{Esquemático da placa que faz a conexão do sistema industrial com as $GPIOs$ da $Raspberry$}
+    \includegraphics[scale=0.15]{Figuras/atuador_rasp.png}
+    \caption{Esquemático da placa que faz a conexão do sistema legado CA com as $GPIOs$ da $Raspberry$}
     \label{fig:2}
 \end{figure}
 
 Por fim, foram desenvolvidas duas placas, evidenciando a simplicidade e eficácia do processo de conversão de tensões, o que reforça a viabilidade da integração entre sistemas legados e modernos. \par
 
-A Figura \ref{fig:clp_rasp_board} referencia a placa que faz a conexão via relé, entre CLP e $Raspberry\ Pi$ e a Figura \ref{fig:rasp_clp_board} a placa que faz a conexão entre a $Raspberry\ Pi$ e o CLP, utilizando o optoacoplador. \par
+A Figura \ref{fig:clp_rasp_board} referencia a placa que faz a conexão via relé, entre o sistema legado e $Raspberry\ Pi$ e a Figura \ref{fig:rasp_clp_board} a placa que faz a conexão entre a $Raspberry\ Pi$ e o sistema legado, utilizando o optoacoplador. \par
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[scale=0.15]{Figuras/placa_clp_rele.png}
-    \caption{Modelo 3D da placa que faz a conexão do CLP com a Raspberry Pi}
+    \caption{Modelo 3D da placa que faz a conexão do sistema legado com a Raspberry Pi}
     \label{fig:clp_rasp_board}
 \end{figure}
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[scale=0.15]{Figuras/placa_rasp_clp.png}
-    \caption{Modelo 3D da placa que faz a conexão da Raspberry Pi com o CLP}
+    \caption{Modelo 3D da placa que faz a conexão da Raspberry Pi com o sistema legado}
     \label{fig:rasp_clp_board}
 \end{figure}
 
@@ -158,9 +161,9 @@ A Figura \ref{fig:diagrama_uml_gpio_communication} representa um diagram $UML$ d
 
 A interface $frontend$ do projeto utiliza as ferramentas integradas já oferecidas pela plataforma $ThingsBoard$, aproveitando sua capacidade de abstrair elementos como animações de $widgets$ e a interação entre o usuário e a $Raspberry\ Pi$. O primeiro passo no desenvolvimento da interface foi analisar as funcionalidades necessárias para cobrir toda a operação do sistema. \par
 
-Nesse contexto, considerou-se a utilização de dois elementos principais: uma chave e um $LED$ virtual. O primeiro funciona como uma botoeira industrial, permitindo ao operador iniciar o processo industrial. Sua comunicação é realizada por dois métodos de requisição. Enquanto um método verifica a posição do pino para determinar se a chave deve ser exibida como ligada ou desligada, ou seja, esse controle facilita o acompanhamento e a interação do operador com o sistema em tempo real. Já o outro método tem como responsabilidade informar à placa qual o pino alterado e para qual nível lógico ele deve ser alterado.\par
+Nesse contexto, considerou-se a utilização de dois elementos principais: uma chave e um $LED$ virtual. O primeiro funciona como uma botoeira industrial, permitindo ao usuário iniciar o processo. Sua comunicação é realizada por dois métodos de requisição. Enquanto um método verifica a posição do pino para determinar se a chave deve ser exibida como ligada ou desligada, ou seja, esse controle facilita o acompanhamento e a interação do operador com o sistema em tempo real. Já o outro método tem como responsabilidade informar à placa qual o pino alterado e para qual nível lógico ele deve ser alterado.\par
 
-O segundo elemento, o $LED$ virtual, tem como objetivo indicar ao operador se o sensor está sendo acionado no sistema industrial. Com isso, a representação gráfica proporciona um $feedback$ visual tornando o sistema mais intuitivo. \par 
+O segundo elemento, o $LED$ virtual, tem como objetivo indicar ao usuário se o sensor está sendo acionado no sistema legado. Com isso, a representação gráfica proporciona um $feedback$ visual tornando o sistema mais intuitivo. \par 
 
 A Figura \ref{fig:5} representa o diagrama de funcionamento  da interface $frontend$ do sistema. \par  
 
@@ -194,7 +197,7 @@ A Figura \ref{fig:6} apresenta um fluxograma que ilustra de maneira clara e obje
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=0.16]{Figuras/fluxograma_front_backend.png}
+    \includegraphics[scale=0.3]{Figuras/fluxograma_front_back.png}
     \caption{Fluxograma da interface $frontend$ e $backend$}
     \label{fig:6}
 \end{figure}
@@ -306,7 +309,7 @@ Com o objetivo de melhorar a legibilidade do código, o tratamento dos requerime
 No trecho de código, demonstrado pela Figura \ref{fig:13}, cria-se os métodos "$set\_gpio\_status$" e "$get\_gpio\_status$", que são essenciais para o funcionamento do sistema legado idealizado. Esses métodos são associados a uma chave do dicionário "$requests$". É importante ressaltar que a chave do dicionário deve ter o mesmo nome da variável configurada dentro do $widget$. Caso contrário, os dados serão perdidos durante a comunicação, comprometendo o funcionamento correto do sistema. \par
 
 \subsection{Aplicação}
- Na simulação proposta (o monitoramento de embalagens em uma linha de produção), essas regiões foram previamente preenchidas com exemplos de uso funcional, servindo tanto para validação do sistema quanto para guiar o desenvolvimento de aplicações futuras. Essa abordagem modular proporciona maior agilidade no ajuste do sistema para novas tarefas, reduzindo o esforço de reescrita e mantendo a estrutura principal de monitoramento e comunicação consistente e robusta. A Figura \ref{fig:14} mostra o trecho de código em questão. \par
+ Na simulação proposta (o monitoramento e controle de uma bomba hidráulica), essas regiões foram previamente preenchidas com exemplos de uso funcional, servindo tanto para validação do sistema quanto para guiar o desenvolvimento de aplicações futuras. Essa abordagem modular proporciona maior agilidade no ajuste do sistema para novas tarefas, reduzindo o esforço de reescrita e mantendo a estrutura principal de monitoramento e comunicação consistente e robusta. A Figura \ref{fig:14} mostra o trecho de código em questão. \par
 
 \begin{figure}[!htb]
     \centering
@@ -315,21 +318,32 @@ No trecho de código, demonstrado pela Figura \ref{fig:13}, cria-se os métodos 
     \label{fig:14}
 \end{figure}
 
+\section{Resultados}
+Os testes realizados com o sistema de controle integrado ao ambiente legado demonstraram resultados satisfatórios quanto a estabilidade e desempenho da solução proposta. Durante as simulações, foi observado que o atraso na comunicação entre o dispositivo de legado e a interface gráfica foi praticamente imperceptível, mesmo com o uso de conexão via rede sem fio, evidenciando a viabilidade do uso do protocolo $Mqtt$ em aplicações que demandam resposta em tempo quase real. \par
+
+Outro aspecto relevante foi a ausência de falhas ou quedas de conexão durante todo o período de testes, o que indica que a arquitetura implementada não sofre com eventuais instabilidades da rede internet. Essa estabilidade é essencial para aplicações de difícil acesso no meio físico ou de risco, onde, caso haja perda de conectividade pode comprometer a segurança ou a eficiência do processo monitorado. \par
+
+Além disso, a $Raspberry\ Pi\ 4$, apresentou comportamento estável, sem demonstrar travamentos ou lentidão durante a execução do sistema. Isso sugere que o projeto possui baixo consumo de processamento e de memória RAM, sendo compatível com sistemas embarcados de capacidade limitada, o que amplia suas possibilidades de aplicação. \par
+
+Podemos concluir que, esses resultados validam a proposta como uma solução eficaz para a modernização de sistemas legados, mantendo a confiabilidade e a segurança operacional. \par
+
+
+
 \section{Conclusão}
 O desenvolvimento deste projeto demonstrou a viabilidade da integração entre sistemas legados e tecnologias modernas de comunicação baseadas em $IoT$, utilizando arquiteturas modulares, escaláveis e de fácil manutenção. A implementação de interfaces para abstração do controle de $GPIOs$ e das camadas de comunicação, aliadas à aplicação de padrões de projeto como $Adapter$, permitiu criar um sistema altamente adaptável, preparado para suportar diferentes plataformas de hardware e protocolos de comunicação.\par
 
-A utilização de dispositivos como o optoacoplador 4N25 e o relé para isolamento elétrico garantiu a segurança e a integridade dos componentes modernos frente aos sistemas industriais, preservando a confiabilidade do ambiente de operação. A integração com a plataforma $ThingsBoard$ permitiu validar a comunicação remota de forma intuitiva e eficiente, evidenciando o potencial de ampliação e aplicabilidade da solução em ambientes industriais e laboratoriais reais.\par
+A utilização de dispositivos como o optoacoplador 4N25 e o relé para isolamento elétrico garantiu a segurança e a integridade dos componentes modernos frente aos sistemas legado, preservando a confiabilidade do ambiente de operação. A integração com a plataforma $ThingsBoard$ permitiu validar a comunicação remota de forma intuitiva e eficiente, evidenciando o potencial de ampliação e aplicabilidade da solução em ambientes industriais, laboratoriais e privados reais.\par
 
 Além disso, a estratégia de otimização no envio de dados, transmitindo apenas alterações relevantes, contribuiu para a eficiência da rede e para a robustez da comunicação, características essenciais em aplicações de monitoramento contínuo.\par
 
 Com a estrutura proposta, o sistema mostrou-se versátil, capaz de se adaptar a diferentes contextos de aplicação sem a necessidade de reescrita significativa de código. A modularidade obtida representa um avanço significativo no desenvolvimento de soluções de modernização de plantas legadas, proporcionando uma alternativa de baixo custo, alta eficiência e grande potencial de expansão.\par
 
-Por fim, o projeto contribui para o fortalecimento do uso de tecnologias de $IoT$ em cenários industriais tradicionais, aproximando-os das novas demandas de automação, controle e monitoramento remoto, alinhando-se às tendências de transformação digital no setor.\par
+Por fim, o projeto contribui para o fortalecimento do uso de tecnologias de $IoT$ na automação residencial, aproximando-os das novas demandas de automação, controle e monitoramento remoto, alinhando-se às tendências de transformação digital no setor.\par
 	
 \section{Agradecimentos}
-Agradeço primeiramente à minha família, pelo apoio incondicional, incentivo e compreensão ao longo de toda a minha trajetória acadêmica. Sem a base sólida que me proporcionaram, esta conquista não seria possível. \par
+Agradeço primeiramente à minha família e minha namorada Brenda, pelo apoio incondicional, incentivo e compreensão ao longo de toda a minha trajetória acadêmica. Sem a base sólida que me proporcionaram, esta conquista não seria possível. \par
 
-Aos meus amigos, que caminharam comigo durante a jornada da faculdade, oferecendo apoio, companheirismo e palavras de incentivo nos momentos de dificuldade e celebração nas vitórias. \par
+Aos meus amigos, especialmente ao Edmundo, que caminharam comigo durante a jornada da faculdade, oferecendo apoio, companheirismo e palavras de incentivo nos momentos de dificuldade e celebração nas vitórias. \par
 
 Ao professor Dr. Rodrigo Maximiano, meu orientador, pela orientação, apoio e contribuições essenciais para a realização deste trabalho. \par
 
